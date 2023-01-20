@@ -29,9 +29,27 @@ export const onShowProfileSuccess = (profile) => {
     const div = document.createElement('div')
     div.innerHTML = `
         <h3>${profile.firstName}  ${profile.lastName}</h3>
-        <p>${profile.class}</p>
-        <p>${profile.strength}</p>
+        <p>${profile.school}</p>
+        <p>${profile.health}</p>
         <p>${profile._id}</p>
-    `
+
+        <form data-id="${profile._id}">
+        <input type="text" name="firstName" value="${profile.firstName}" />
+        <input type="text" name="lastName" value="${profile.lastName}" />
+        <input type="text" name="school" value="${profile.school}" />
+        <input type="number" name="health" value="${profile.health}" />
+        <input type="submit" value="Update Profile" />
+    </form>
+
+    <button type="button" data-id="${profile._id}">Delete Profile</button>
+`
     showProfileContainer.appendChild(div)
+}
+
+export const onUpdateProfileSuccess = () => {
+    messageContainer.innerText = 'Update was successful :)'
+}
+
+export const onDeleteProfileSuccess = () => {
+    messageContainer.innerText = 'Delete was successful :)'
 }
